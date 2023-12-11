@@ -1,35 +1,48 @@
-import { useState } from "react";
+import toast from "react-hot-toast";
+
+
 
 
 const Contact = () => {
    
     
-      const handleSubmit =e=>{
-        e.preventDefault()
-        const form =e.target
-        const email= form.email.value
-        const name =form.name.value
-        const message =form.message.value
-        const formData= {
-            email,name,message
-        }
-        console.log(formData)
-        const response = fetch('http://localhost:6001/send-email', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
-          if (response.ok) {
-            console.log('Email sent successfully');
-            // You can add additional logic here, such as showing a success message to the user.
-          } else {
-            console.error('Error sending email');
-          }
-       
-      }
+    const handleSubmit =  (e) => {
+        e.preventDefault();
     
+        const form = e.target;
+        const email = form.email.value;
+        const name = form.name.value;
+        const message = form.message.value;
+        const formData = {
+            email,
+            name,
+            message,
+        };
+    
+     
+             fetch('http://localhost:6001/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data?.message){
+                    form.reset()
+               
+                    toast.success(`${data.message}`)
+                }
+               
+            })
+
+    
+            
+        } 
+ 
+    
+      
    
     
     return (
@@ -52,7 +65,7 @@ const Contact = () => {
         <input placeholder="Your Name"
             type="text"
             name="name"
-           
+           required
             
           className="peer text-white h-full w-full rounded-md border border-blue-gray-200 border-t-transparent !border-t-blue-gray-200 bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:!border-t-gray-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50" />
         <label
@@ -64,6 +77,7 @@ const Contact = () => {
       </h6>
       <div className="relative h-11 w-full min-w-[200px]">
         <input type="email"
+        required
             name="email"
            placeholder="Your Email"
           className="peer text-white h-full w-full rounded-md border border-blue-gray-200 border-t-transparent !border-t-blue-gray-200 bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:!border-t-gray-900 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50" />
@@ -76,6 +90,7 @@ const Contact = () => {
       </h6>
      
       <textarea name="message"
+      required
           className="textarea textarea-primary text-white" placeholder="Your Message">
 
       </textarea>
