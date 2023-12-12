@@ -46,6 +46,7 @@ const About = () => {
        
                 <h1 className=' mt-5 text-2xl text-center mb-5'>Connect With Me:</h1>
                 <p className='flex items-center justify-center gap-5'>
+                    <a href="https://github.com/rishanzihad" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="zihad-islam-b03412289" height="30" width="40" /></a>
                     <a href="https://linkedin.com/in/zihad-islam-b03412289" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="zihad-islam-b03412289" height="30" width="40" /></a>
                     <a href="https://instagram.com/rishan_web_devoloper" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="rishan_web_devoloper" height="30" width="40" /></a>
                     <a href="https://www.youtube.com/c/www.youtube.com/@weblearner-vr5ie" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/youtube.svg" alt="www.youtube.com/@weblearner-vr5ie" height="30" width="40" /></a>
